@@ -1,1 +1,0 @@
-export CHANGELOG_GITHUB_TOKEN="c071d27e84b6daeae6bf92c9c2cb04db6d36372e"
