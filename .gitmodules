@@ -1,0 +1,3 @@
+[submodule "zsh/slimline"]
+	path = zsh/slimline
+	url = git@github.com:mgee/slimline.git
