@@ -41,6 +41,7 @@ brew_cask_install 'sourcetree'
 brew_cask_install 'steam'
 brew_cask_install 'things'
 brew_cask_install 'transmit'
+brew_cask_install 'vlc'
 
 apm install atom-jinja2
 apm install dash
