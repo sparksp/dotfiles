@@ -52,8 +52,10 @@ apm install language-rspec
 apm install linter
 apm install linter-rubocop
 apm install linter-shellcheck
+apm install merge-conflicts
 apm install open-in-sourcetree
 apm install rspec
 apm install sort-lines
+apm install vim-mode
 
 gem_install_or_update 'rubocop'
