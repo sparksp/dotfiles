@@ -1,3 +1,5 @@
+setopt promptsubst
+
 vim_ins_mode="∙"
 vim_cmd_mode="⋮"
 vim_mode=$vim_ins_mode
