@@ -57,7 +57,6 @@ apm install merge-conflicts
 apm install open-in-sourcetree
 apm install rspec
 apm install sort-lines
-apm install vim-mode
 apm update
 
 gem_install_or_update 'rubocop'
