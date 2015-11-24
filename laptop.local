@@ -25,6 +25,7 @@ brew_cask_is_installed() {
 }
 
 append_to_shells 'zsh'
+brew_install_or_upgrade 'coreutils'
 brew_install_or_upgrade 'git-extras'
 brew_install_or_upgrade 'git-flow'
 brew_install_or_upgrade 'shellcheck'
