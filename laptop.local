@@ -48,7 +48,6 @@ brew_cask_install 'vlc'
 apm install atom-jinja2
 apm install dash
 apm install git-plus
-apm install language-ansible
 apm install language-haml
 apm install language-rspec
 apm install linter
