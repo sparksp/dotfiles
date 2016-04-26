@@ -9,54 +9,37 @@ append_to_shells() {
   fi
 }
 
-brew_cask_install() {
-  if brew_cask_is_installed "$1"; then
-    fancy_echo "Already installed %s. Skipping ..." "$1"
-  else
-    fancy_echo "Installing %s ..." "$1"
-    brew cask install "$@"
-  fi
-}
-
-brew_cask_is_installed() {
-  local name="$1"
-
-  brew cask list -1 | grep -Fqx "$name"
-}
-
 append_to_shells 'zsh'
-brew_install_or_upgrade 'coreutils'
-brew_install_or_upgrade 'git-extras'
-brew_install_or_upgrade 'git-flow'
-brew_install_or_upgrade 'shellcheck'
 
-brew_install_or_upgrade 'cask'
-brew_cask_install 'alfred'
-brew_cask_install 'atom'
-brew_cask_install 'bartender'
-brew_cask_install 'dropbox'
-brew_cask_install 'google-drive'
-brew_cask_install 'lastfm'
-brew_cask_install 'skype'
-brew_cask_install 'slack'
-brew_cask_install 'sourcetree'
-brew_cask_install 'steam'
-brew_cask_install 'things'
-brew_cask_install 'transmit'
-brew_cask_install 'vlc'
+brew bundle --file=- <<EOF
+brew "coreutils"
+brew "git-extras"
+brew "git-flow"
+brew "homebrew/versions/qt55", conflicts_with: ['qt']
+brew "shellcheck"
 
-apm install atom-jinja2
-apm install dash
-apm install git-plus
-apm install language-haml
-apm install language-rspec
-apm install linter
-apm install linter-rubocop
-apm install linter-shellcheck
-apm install merge-conflicts
-apm install open-in-sourcetree
-apm install rspec
-apm install sort-lines
+brew "python"
+
+brew "cask"
+cask "alfred"
+cask "atom"
+cask "bartender"
+cask "dropbox"
+cask "google-drive"
+cask "lastfm"
+cask "skype"
+cask "slack"
+cask "sourcetree"
+cask "steam"
+cask "transmit"
+cask "vlc"
+EOF
+
+brew unlink qt55 && brew link --force qt55
+
+pip install --upgrade pip setuptools
+
+apm install --compatible --packages-file ~/.atom/packages.txt
 apm update
 
 gem_install_or_update 'rubocop'

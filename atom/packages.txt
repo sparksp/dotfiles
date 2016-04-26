@@ -1,0 +1,12 @@
+atom-jinja2
+dash
+git-plus
+language-haml
+language-rspec
+linter
+linter-rubocop
+linter-shellcheck
+merge-conflicts
+open-in-sourcetree
+rspec
+sort-lines
