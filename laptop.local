@@ -19,6 +19,10 @@ brew "homebrew/versions/qt55", conflicts_with: ['qt']
 brew "shellcheck"
 
 brew "python"
+tap "homebrew/dupes"
+tap "homebrew/versions"
+tap "homebrew/homebrew-php"
+brew "php71", restart_service: :changed, args: ["with-postgresql", "with-httpd24"]
 
 brew "cask"
 cask "alfred"
