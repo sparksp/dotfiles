@@ -15,7 +15,6 @@ brew bundle --file=- <<EOF
 brew "coreutils"
 brew "git-extras"
 brew "git-flow"
-brew "homebrew/versions/qt55", conflicts_with: ['qt']
 brew "shellcheck"
 
 brew "python"
@@ -37,7 +36,6 @@ cask "transmit"
 cask "vlc"
 EOF
 
-brew unlink qt55 && brew link --force qt55
 
 pip install --upgrade pip setuptools
 
