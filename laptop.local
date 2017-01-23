@@ -15,9 +15,9 @@ brew bundle --file=- <<EOF
 brew "coreutils"
 brew "git-extras"
 brew "git-flow"
+brew "python"
 brew "shellcheck"
 
-brew "python"
 tap "homebrew/dupes"
 tap "homebrew/versions"
 tap "homebrew/homebrew-php"
@@ -37,7 +37,7 @@ cask "vlc"
 EOF
 
 
-pip install --upgrade pip setuptools
+pip install --user python --upgrade pip setuptools
 
 apm install --compatible --packages-file ~/.atom/packages.txt
 apm update
