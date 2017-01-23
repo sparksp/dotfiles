@@ -1,5 +1,6 @@
 atom-jinja2
 dash
+file-icons
 git-plus
 language-haml
 language-rspec
