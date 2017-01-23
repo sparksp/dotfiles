@@ -15,6 +15,7 @@ brew bundle --file=- <<EOF
 brew "coreutils"
 brew "git-extras"
 brew "git-flow"
+brew "mas"
 brew "python"
 brew "shellcheck"
 
@@ -34,8 +35,11 @@ cask "slack"
 cask "sourcetree"
 cask "transmit"
 cask "vlc"
-EOF
 
+mas "Patterns", id: 429449079
+mas "Moom", id: 419330170
+mas "Pixelmator", id: 407963104
+EOF
 
 pip install --user python --upgrade pip setuptools
 
@@ -43,3 +47,5 @@ apm install --compatible --packages-file ~/.atom/packages.txt
 apm update
 
 gem_install_or_update 'rubocop'
+
+mas outdated
