@@ -24,6 +24,7 @@ tap "homebrew/dupes"
 tap "homebrew/versions"
 tap "homebrew/homebrew-php"
 brew "php71", restart_service: :changed, args: ["with-postgresql", "with-httpd24"]
+brew "composer"
 
 brew "cask"
 cask "alfred"
