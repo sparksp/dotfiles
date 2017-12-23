@@ -1,3 +1,6 @@
 [submodule "zsh/slimline"]
 	path = zsh/slimline
 	url = git@github.com:mgee/slimline.git
+[submodule "zsh/k"]
+	path = zsh/k
+	url = git@github.com:supercrabtree/k.git
