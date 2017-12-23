@@ -17,7 +17,6 @@ brew "git-extras"
 brew "git-flow"
 brew "hugo"
 brew "mas"
-brew "python"
 brew "shellcheck"
 
 tap "homebrew/dupes"
@@ -41,8 +40,6 @@ mas "Patterns", id: 429449079
 mas "Moom", id: 419330170
 mas "Pixelmator", id: 407963104
 EOF
-
-pip install --user python --upgrade pip setuptools
 
 gem_install_or_update 'rubocop'
 
