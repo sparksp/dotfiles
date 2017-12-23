@@ -28,7 +28,6 @@ brew "composer"
 
 brew "cask"
 cask "alfred"
-cask "atom"
 cask "bartender"
 cask "dropbox"
 cask "google-drive"
@@ -44,9 +43,6 @@ mas "Pixelmator", id: 407963104
 EOF
 
 pip install --user python --upgrade pip setuptools
-
-apm install --compatible --packages-file ~/.atom/packages.txt
-apm update
 
 gem_install_or_update 'rubocop'
 
