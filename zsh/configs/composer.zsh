@@ -1,1 +1,1 @@
-export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:.git/safe/../../vendor/bin:$PATH"
