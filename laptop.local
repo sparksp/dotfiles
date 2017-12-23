@@ -40,6 +40,4 @@ mas "Moom", id: 419330170
 mas "Pixelmator", id: 407963104
 EOF
 
-gem_install_or_update 'rubocop'
-
 mas outdated
