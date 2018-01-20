@@ -32,7 +32,6 @@ cask "dropbox"
 cask "google-backup-and-sync"
 cask "skype"
 cask "sourcetree"
-cask "transmit"
 cask "vlc"
 
 mas "Patterns", id: 429449079
