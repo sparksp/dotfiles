@@ -34,6 +34,9 @@ cask "skype"
 cask "sourcetree"
 cask "vlc"
 
+tap "caskroom/fonts"
+cask "font-fira-code"
+
 mas "Patterns", id: 429449079
 mas "Moom", id: 419330170
 mas "Pixelmator", id: 407963104
