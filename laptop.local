@@ -16,13 +16,7 @@ brew "coreutils"
 brew "git-extras"
 brew "git-flow"
 brew "hugo"
-brew "mas"
 brew "shellcheck"
-
-tap "homebrew/dupes"
-tap "homebrew/versions"
-tap "homebrew/homebrew-php"
-brew "php71", restart_service: :changed, args: ["with-postgresql", "with-httpd24"]
 brew "composer"
 
 brew "cask"
@@ -37,6 +31,7 @@ cask "vlc"
 tap "caskroom/fonts"
 cask "font-fira-code"
 
+brew "mas"
 mas "Patterns", id: 429449079
 mas "Moom", id: 419330170
 EOF
