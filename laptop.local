@@ -34,7 +34,7 @@ cask "skype"
 cask "sourcetree"
 cask "vlc"
 
-tap "caskroom/fonts"
+tap "homebrew/cask-fonts"
 cask "font-fira-code"
 
 mas "Patterns", id: 429449079
