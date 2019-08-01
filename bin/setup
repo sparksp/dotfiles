@@ -1,0 +1,135 @@
+#!/bin/sh
+
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n$fmt\\n" "$@"
+}
+
+append_to_zshrc() {
+  local text="$1" zshrc
+  local skip_new_line="${2:-0}"
+
+  if [ -w "$HOME/.zshrc.local" ]; then
+    zshrc="$HOME/.zshrc.local"
+  else
+    zshrc="$HOME/.zshrc"
+  fi
+
+  if ! grep -Fqs "$text" "$zshrc"; then
+    if [ "$skip_new_line" -eq 1 ]; then
+      printf "%s\\n" "$text" >> "$zshrc"
+    else
+      printf "\\n%s\\n" "$text" >> "$zshrc"
+    fi
+  fi
+}
+
+update_shell() {
+  local shell_path;
+  shell_path="$(command -v zsh)"
+
+  fancy_echo "Changing your shell to zsh ..."
+  if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
+    fancy_echo "Adding '$shell_path' to /etc/shells"
+    sudo sh -c "echo $shell_path >> /etc/shells"
+  fi
+  sudo chsh -s "$shell_path" "$USER"
+}
+
+# shellcheck disable=SC2154
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+
+# shellcheck disable=SC2016
+append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
+
+if [ ! -d "$HOME/.bin/" ]; then
+  mkdir "$HOME/.bin"
+fi
+
+if [ ! -f "$HOME/.zshrc" ]; then
+  touch "$HOME/.zshrc"
+fi
+
+if ! command -v brew >/dev/null; then
+  fancy_echo "Installing Homebrew ..."
+    curl -fsS \
+      'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+
+    append_to_zshrc '# recommended by brew doctor'
+
+    # shellcheck disable=SC2016
+    append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
+
+    export PATH="/usr/local/bin:$PATH"
+fi
+
+fancy_echo "Updating Homebrew formulae ..."
+brew update --force # https://github.com/Homebrew/brew/issues/1151
+brew bundle --file=- <<EOF
+tap "thoughtbot/formulae"
+
+# Unix
+brew "coreutils"
+brew "git"
+brew "git-extras"
+brew "rcm"
+brew "vim"
+brew "zsh"
+brew "shellcheck"
+brew "hugo"
+
+brew "cask"
+cask "alfred"
+cask "dropbox"
+cask "google-backup-and-sync"
+cask "skype"
+cask "sourcetree"
+cask "vlc"
+
+tap "homebrew/cask-fonts"
+cask "font-fira-code"
+
+brew "mas"
+mas "Moom", id: 419330170
+mas "Patterns", id: 429449079
+EOF
+
+mas outdated
+
+case "$SHELL" in
+  */zsh)
+    if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
+      update_shell
+    fi
+    ;;
+  *)
+    update_shell
+    ;;
+esac
+
+if [ ! -d "$HOME/thoughtbot/" ]; then
+  mkdir "$HOME/thoughtbot"
+fi
+
+if [ ! -d "$HOME/thoughtbot/dotfiles/" ]; then
+  git clone git://github.com/thoughtbot/dotfiles.git "$HOME/thoughtbot/dotfiles"
+fi
+
+if [ ! -d "$HOME/sparksp/" ]; then
+  mkdir "$HOME/sparksp"
+fi
+
+if [ ! -d "$HOME/sparksp/dotfiles/" ]; then
+  git clone git@github.com:sparksp/dotfiles.git "$HOME/sparksp/dotfiles"
+fi
+
+if [ ! -f "$HOME/.rcrc" ]; then
+  rcup -d "$HOME/sparksp/dotfiles" -d "$HOME/thoughtbot/dotfiles"
+else
+  rcup
+fi
+
