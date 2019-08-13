@@ -74,6 +74,7 @@ tap "thoughtbot/formulae"
 
 # Unix
 brew "coreutils"
+brew "the_silver_searcher"
 brew "git"
 brew "git-extras"
 brew "rcm"
