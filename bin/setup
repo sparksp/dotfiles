@@ -82,8 +82,10 @@ brew "vim"
 brew "zsh"
 brew "shellcheck"
 brew "hugo"
+brew "mysql"
 brew "php"
 brew "composer"
+brew "npm"
 
 brew "cask"
 cask "alfred"
@@ -99,6 +101,7 @@ cask "font-fira-code"
 brew "mas"
 mas "Moom", id: 419330170
 mas "Patterns", id: 429449079
+mas "Slack", id: 803453959
 EOF
 
 mas outdated
