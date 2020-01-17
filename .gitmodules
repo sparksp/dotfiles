@@ -4,3 +4,6 @@
 [submodule "zsh/k"]
 	path = zsh/k
 	url = git@github.com:supercrabtree/k.git
+[submodule "zsh/elm-sh-completion"]
+	path = zsh/elm
+	url = https://github.com/dmy/elm-sh-completion
