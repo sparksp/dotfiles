@@ -86,11 +86,15 @@ brew "mysql"
 brew "php"
 brew "composer"
 brew "npm"
+brew "gpg2"
+brew "gnupg"
+brew "pinentry-mac"
 
 brew "cask"
 cask "alfred"
 cask "dropbox"
 cask "google-backup-and-sync"
+cask "keybase"
 cask "skype"
 cask "sourcetree"
 cask "vlc"
@@ -144,3 +148,9 @@ else
   rcup
 fi
 
+# Ensure GNUPG is secure
+if [ $(stat -f %u:%g ~/.gnupg) != "$(id -u):$(id -g)" ]; then
+  fancy_echo "Securing GNUPG directory ..."
+  sudo chown -R "$(id -u):$(id -g)" ~/.gnupg
+fi
+chmod -R go-rwx ~/.gnupg
