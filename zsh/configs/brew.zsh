@@ -3,4 +3,5 @@ if type brew &>/dev/null; then
 
   autoload -Uz compinit
   compinit
+  compaudit | xargs chmod g-w
 fi
