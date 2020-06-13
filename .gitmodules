@@ -1,9 +1,11 @@
 [submodule "zsh/slimline"]
 	path = zsh/slimline
+	branch = master
 	url = git@github.com:mengelbrecht/slimline.git
 [submodule "zsh/k"]
 	path = zsh/k
 	url = git@github.com:supercrabtree/k.git
 [submodule "zsh/elm-sh-completion"]
 	path = zsh/elm
+	branch = master
 	url = https://github.com/dmy/elm-sh-completion
