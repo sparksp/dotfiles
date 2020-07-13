@@ -12,5 +12,7 @@ alias grs="git flow release start"
 alias grf="git flow release finish"
 
 # File listings
-alias l="k"
-alias ll="k -a"
+alias ls="exa --classify"
+alias l="exa --classify --long --color-scale --git --git-ignore"
+alias ll="exa --classify --long --color-scale --git"
+alias la="exa --classify --long --color-scale --git --all"
