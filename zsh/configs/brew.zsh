@@ -5,3 +5,6 @@ if type brew &>/dev/null; then
   compinit
   compaudit | xargs chmod g-w
 fi
+
+# recommended by brew doctor
+export PATH="/usr/local/bin:$PATH"
