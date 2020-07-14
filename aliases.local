@@ -16,3 +16,6 @@ alias ls="exa --classify"
 alias l="exa --classify --long --color-scale --git --git-ignore"
 alias ll="exa --classify --long --color-scale --git"
 alias la="exa --classify --long --color-scale --git --all"
+
+# Docker
+alias dcr="docker-compose run --rm"
