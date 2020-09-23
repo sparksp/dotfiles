@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 fancy_echo() {
   local fmt="$1"; shift
@@ -69,56 +69,21 @@ fi
 
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
-brew bundle --file=- <<EOF
-tap "thoughtbot/formulae"
 
-# Unix
-brew "coreutils"
-brew "the_silver_searcher"
-brew "bat"
-brew "git"
-brew "git-extras"
-brew "rcm"
-brew "vim"
-brew "zsh"
-brew "exa"
-brew "shellcheck"
-brew "hugo"
-brew "php"
-brew "composer"
-brew "npm"
-brew "yarn"
-
-brew "gpg2"
-brew "gnupg"
-brew "pinentry-mac"
-
-brew "cask"
-cask "alfred"
-cask "dropbox"
-cask "google-backup-and-sync"
-cask "keybase"
-cask "skype"
-cask "sourcetree"
-cask "vlc"
-
-tap "beeftornado/rmtree"
-
-tap "homebrew/cask-fonts"
-cask "font-fira-code"
-
-brew "mas"
-mas "Moom", id: 419330170
-mas "Patterns", id: 429449079
-mas "Slack", id: 803453959
-EOF
+if [ ! -f "$HOME/.Brewfile" ]; then
+  # If we use `brew bundle --file` then we'll get a lockfile here tht we don't want.
+  brewfile="$(dirname "$(dirname "$(readlink "$0")")")/Brewfile"
+  # rcup will link this later but we want it in place now.
+  ln -sf "$brewfile" ~/.Brewfile
+fi
+brew bundle --global
 
 mas outdated
 
 # Fetch "up" into dotfiles
-upconfig="$(dirname $(dirname $(readlink "$0")))/config/up/up.sh"
+upconfig="$(dirname "$(dirname "$(readlink "$0")")")/config/up/up.sh"
 echo "Fetching up.sh"
-curl --create-dirs -s -o $upconfig https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
+curl --create-dirs -s -o "$upconfig" https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
 
 if command -v composer > /dev/null ; then
   composer global require laravel/installer
@@ -159,7 +124,7 @@ else
 fi
 
 # Ensure GNUPG is secure
-if [ $(stat -f %u:%g ~/.gnupg) != "$(id -u):$(id -g)" ]; then
+if [ "$(stat -f %u:%g ~/.gnupg)" != "$(id -u):$(id -g)" ]; then
   fancy_echo "Securing GNUPG directory ..."
   sudo chown -R "$(id -u):$(id -g)" ~/.gnupg
 fi
