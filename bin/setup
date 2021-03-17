@@ -86,7 +86,6 @@ echo "Fetching up.sh"
 curl --create-dirs -s -o "$upconfig" https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
 
 if command -v composer > /dev/null ; then
-  composer global require laravel/installer
   composer global update
 fi
 
