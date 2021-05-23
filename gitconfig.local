@@ -1,9 +1,22 @@
+[core]
+  pager = delta --dark
+
+[delta]
+  syntax-theme = Halflife (rainglow)
+  line-numbers = true
+  navigate = true
+
+[interactive]
+  diffFilter = delta --color-only
+
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
 [user]
-	name = Phill Sparks
-	email = me@phills.me.uk
+  name = Phill Sparks
+  email = me@phills.me.uk
