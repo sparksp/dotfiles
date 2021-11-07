@@ -15,7 +15,7 @@ brew "hugo"
 brew "less", link: true
 brew "mas"
 brew "npm"
-brew "php@7.4"
+brew "php"
 brew "pinentry-mac"
 brew "shellcheck"
 brew "the_silver_searcher"
