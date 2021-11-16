@@ -19,3 +19,7 @@ alias la="exa --classify --long --color-scale --git --all"
 
 # Docker
 alias dcr="docker-compose run --rm"
+
+# Laravel
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+alias artisan='[ -f vendor/bin/sail ] && bash vendor/bin/sail artisan || php artisan'
