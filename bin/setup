@@ -80,6 +80,12 @@ brew bundle --global
 
 mas outdated
 
+# Generate 1Password CLI auto-completion
+if type op &>/dev/null; then
+  op_compdef="$(dirname "$(dirname "$(readlink "$0")")")/zsh/completion/_op"
+  op completion zsh > "$op_compdef"
+fi
+
 # Fetch "up" into dotfiles
 upconfig="$(dirname "$(dirname "$(readlink "$0")")")/config/up/up.sh"
 echo "Fetching up.sh"
