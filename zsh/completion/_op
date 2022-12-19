@@ -14,7 +14,7 @@ function _op {
     '(-h --help)'{-h,--help}'[Get help for op.]' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -30,6 +30,7 @@ function _op {
       "help:Get help for a command"
       "inject:Inject secrets into a config file"
       "item:Perform CRUD operations on the 1Password items in your vaults"
+      "plugin:Manage the shell plugins you use to authenticate third-party CLIs"
       "read:Read a secret using the secrets reference syntax"
       "run:Pass secrets as environment variables to a process"
       "signin:Sign in to a 1Password account"
@@ -70,6 +71,9 @@ function _op {
     ;;
   item)
     _op_item
+    ;;
+  plugin)
+    _op_plugin
     ;;
   read)
     _op_read
@@ -112,7 +116,7 @@ function _op_account {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -160,7 +164,7 @@ function _op_account_add {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_account_forget {
@@ -175,7 +179,7 @@ function _op_account_forget {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_account_get {
@@ -189,7 +193,7 @@ function _op_account_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_account_list {
@@ -203,7 +207,7 @@ function _op_account_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_completion {
@@ -217,7 +221,7 @@ function _op_completion {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -234,7 +238,7 @@ function _op_connect {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -280,7 +284,7 @@ function _op_connect_group {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -318,7 +322,7 @@ function _op_connect_group_grant {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_group_revoke {
@@ -335,7 +339,7 @@ function _op_connect_group_revoke {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -352,7 +356,7 @@ function _op_connect_server {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -401,7 +405,7 @@ function _op_connect_server_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_server_delete {
@@ -415,7 +419,7 @@ function _op_connect_server_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_server_edit {
@@ -430,7 +434,7 @@ function _op_connect_server_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_server_get {
@@ -444,7 +448,7 @@ function _op_connect_server_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_server_list {
@@ -458,7 +462,7 @@ function _op_connect_server_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -475,7 +479,7 @@ function _op_connect_token {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -521,7 +525,7 @@ function _op_connect_token_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_token_delete {
@@ -536,7 +540,7 @@ function _op_connect_token_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_token_edit {
@@ -552,7 +556,7 @@ function _op_connect_token_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_token_list {
@@ -567,7 +571,7 @@ function _op_connect_token_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -584,7 +588,7 @@ function _op_connect_vault {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -621,7 +625,7 @@ function _op_connect_vault_grant {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_connect_vault_revoke {
@@ -637,7 +641,7 @@ function _op_connect_vault_revoke {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -654,7 +658,7 @@ function _op_document {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -705,7 +709,7 @@ function _op_document_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_document_delete {
@@ -721,7 +725,7 @@ function _op_document_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_document_edit {
@@ -739,7 +743,7 @@ function _op_document_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_document_get {
@@ -757,7 +761,7 @@ function _op_document_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_document_list {
@@ -773,7 +777,7 @@ function _op_document_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -790,7 +794,7 @@ function _op_events-api {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -823,7 +827,7 @@ function _op_events-api_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -840,7 +844,7 @@ function _op_group {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -892,7 +896,7 @@ function _op_group_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_delete {
@@ -906,7 +910,7 @@ function _op_group_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_edit {
@@ -922,7 +926,7 @@ function _op_group_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_get {
@@ -936,7 +940,7 @@ function _op_group_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_list {
@@ -952,7 +956,7 @@ function _op_group_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -969,7 +973,7 @@ function _op_group_user {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1011,7 +1015,7 @@ function _op_group_user_grant {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_user_list {
@@ -1025,7 +1029,7 @@ function _op_group_user_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_group_user_revoke {
@@ -1041,7 +1045,7 @@ function _op_group_user_revoke {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_help {
@@ -1054,7 +1058,7 @@ function _op_help {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_inject {
@@ -1072,7 +1076,7 @@ function _op_inject {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1089,7 +1093,7 @@ function _op_item {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1152,7 +1156,7 @@ function _op_item_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_delete {
@@ -1168,7 +1172,7 @@ function _op_item_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_edit {
@@ -1188,7 +1192,7 @@ function _op_item_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_get {
@@ -1207,7 +1211,7 @@ function _op_item_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_list {
@@ -1227,7 +1231,7 @@ function _op_item_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_share {
@@ -1245,7 +1249,7 @@ function _op_item_share {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1262,7 +1266,7 @@ function _op_item_template {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1299,7 +1303,7 @@ function _op_item_template_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_item_template_list {
@@ -1313,7 +1317,181 @@ function _op_item_template_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+
+function _op_plugin {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Get help with plugin.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "clear:Clear shell plugin configuration"
+      "credential:Manage credentials for shell plugins"
+      "init:Get started with 1Password Shell Plugins"
+      "inspect:Inspect your existing shell plugin configurations"
+      "list:List all available shell plugins"
+      "run:Provision credentials from 1Password and run this command"
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  clear)
+    _op_plugin_clear
+    ;;
+  credential)
+    _op_plugin_credential
+    ;;
+  init)
+    _op_plugin_init
+    ;;
+  inspect)
+    _op_plugin_inspect
+    ;;
+  list)
+    _op_plugin_list
+    ;;
+  run)
+    _op_plugin_run
+    ;;
+  esac
+}
+
+function _op_plugin_clear {
+  _arguments \
+    '--all[Clear all configurations for this plugin that apply to this directory and/or terminal session, including the global default.]' \
+    '(-f --force)'{-f,--force}'[Apply immediately without asking for confirmation.]' \
+    '(-h --help)'{-h,--help}'[Get help with plugin clear.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+
+function _op_plugin_credential {
+  local -a commands
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Get help with plugin credential.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+  cmnds)
+    commands=(
+      "import:Import credentials for a shell plugin"
+    )
+    _describe "command" commands
+    ;;
+  esac
+
+  case "$words[1]" in
+  import)
+    _op_plugin_credential_import
+    ;;
+  esac
+}
+
+function _op_plugin_credential_import {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Get help with plugin credential import.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_plugin_init {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Get help with plugin init.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_plugin_inspect {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Get help with plugin inspect.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_plugin_list {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Get help with plugin list.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_plugin_run {
+  _arguments \
+    '(-h --help)'{-h,--help}'[Get help with plugin run.]' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_read {
@@ -1331,7 +1509,7 @@ function _op_read {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_run {
@@ -1347,7 +1525,7 @@ function _op_run {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_signin {
@@ -1363,7 +1541,7 @@ function _op_signin {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_signout {
@@ -1379,7 +1557,7 @@ function _op_signout {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_update {
@@ -1394,7 +1572,7 @@ function _op_update {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1411,7 +1589,7 @@ function _op_user {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1471,7 +1649,7 @@ function _op_user_confirm {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_delete {
@@ -1485,7 +1663,7 @@ function _op_user_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_edit {
@@ -1501,7 +1679,7 @@ function _op_user_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_get {
@@ -1518,7 +1696,7 @@ function _op_user_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_list {
@@ -1534,7 +1712,7 @@ function _op_user_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_provision {
@@ -1551,7 +1729,7 @@ function _op_user_provision {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_reactivate {
@@ -1565,7 +1743,7 @@ function _op_user_reactivate {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_user_suspend {
@@ -1580,7 +1758,7 @@ function _op_user_suspend {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1597,7 +1775,7 @@ function _op_vault {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1655,7 +1833,7 @@ function _op_vault_create {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_delete {
@@ -1669,7 +1847,7 @@ function _op_vault_delete {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_edit {
@@ -1687,7 +1865,7 @@ function _op_vault_edit {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_get {
@@ -1701,7 +1879,7 @@ function _op_vault_get {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1718,7 +1896,7 @@ function _op_vault_group {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1761,7 +1939,7 @@ function _op_vault_group_grant {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_group_list {
@@ -1775,7 +1953,7 @@ function _op_vault_group_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_group_revoke {
@@ -1793,7 +1971,7 @@ function _op_vault_group_revoke {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_list {
@@ -1809,7 +1987,7 @@ function _op_vault_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 
@@ -1826,7 +2004,7 @@ function _op_vault_user {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     "1: :->cmnds" \
     "*::arg:->args"
 
@@ -1869,7 +2047,7 @@ function _op_vault_user_grant {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_user_list {
@@ -1883,7 +2061,7 @@ function _op_vault_user_list {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_vault_user_revoke {
@@ -1901,7 +2079,7 @@ function _op_vault_user_revoke {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
 function _op_whoami {
@@ -1915,6 +2093,6 @@ function _op_whoami {
     '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
     '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
     '--no-color[Print output without color.]' \
-    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when biometric unlock is disabled.]:'
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
 }
 
