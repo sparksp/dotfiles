@@ -1183,7 +1183,7 @@ function _op_item_edit {
     '--tags[Set the tags to the specified (comma-separated) values. An empty value will remove all tags.]:' \
     '--title[Set the item'\''s `title`.]:' \
     '--url[Set the `URL` associated with the item]:' \
-    '--vault[Save the item in this `vault`.]:' \
+    '--vault[Edit the item in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
     '--config[Use this configuration `directory`.]:' \
@@ -1562,6 +1562,7 @@ function _op_signout {
 
 function _op_update {
   _arguments \
+    '--channel[Look for updates from a specific channel. allowed: stable, beta]:' \
     '--directory[Download the update to this '\'''\''path'\'''\''.]:' \
     '(-h --help)'{-h,--help}'[Get help with update.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
