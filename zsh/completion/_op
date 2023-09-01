@@ -748,10 +748,11 @@ function _op_document_edit {
 
 function _op_document_get {
   _arguments \
-    '--force[Force the document to be printed to the shell when printing an unintelligible document to an interactive terminal.]' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
+    '--force[Forcibly print an unintelligible document to an interactive terminal. If --out-file is specified, save the document to a file without prompting for confirmation.]' \
     '(-h --help)'{-h,--help}'[Get help with document get.]' \
     '--include-archive[Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
-    '--output[Save the document to the file `path` instead of stdout.]:' \
+    '(-o --out-file)'{-o,--out-file}'[Save the document to the file `path` instead of stdout.]:' \
     '--vault[Look for the document in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
@@ -817,7 +818,7 @@ function _op_events-api {
 function _op_events-api_create {
   _arguments \
     '--expires-in[Set how the long the events-api token is valid for in (s)econds, (m)inutes, or (h)ours.]:' \
-    '*--features[Set the comma-separated list of `features` the integration token can be used for. Options: '\''signinattempts'\'', '\''itemusages'\''.]:' \
+    '*--features[Set the comma-separated list of `features` the integration token can be used for. Options: '\''signinattempts'\'', '\''itemusages'\'', '\''auditevents'\''.]:' \
     '(-h --help)'{-h,--help}'[Get help with events-api create.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
@@ -1063,7 +1064,7 @@ function _op_help {
 
 function _op_inject {
   _arguments \
-    '--file-mode[Set filemode for the output file if it does not yet exist. It is ignored without the --out-file flag.]:' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
     '(-h --help)'{-h,--help}'[Get help with inject.]' \
     '(-i --in-file)'{-i,--in-file}'[The filename of a template file to inject.]:' \
@@ -1105,6 +1106,7 @@ function _op_item {
       "edit:Edit an item's details"
       "get:Get an item's details"
       "list:List items"
+      "move:Move an item between vaults"
       "share:Share an item"
       "template:Manage templates"
     )
@@ -1128,6 +1130,9 @@ function _op_item {
   list)
     _op_item_list
     ;;
+  move)
+    _op_item_move
+    ;;
   share)
     _op_item_share
     ;;
@@ -1141,6 +1146,7 @@ function _op_item_create {
   _arguments \
     '--category[Set the item'\''s `category`.]:' \
     '--dry-run[Perform a dry run of the command and output a preview of the resulting item.]' \
+    '--favorite[Add item to favorites.]' \
     '--generate-password[Give the item a randomly generated password.]' \
     '(-h --help)'{-h,--help}'[Get help with item create.]' \
     '--tags[Set the tags to the specified (comma-separated) values.]:' \
@@ -1178,6 +1184,7 @@ function _op_item_delete {
 function _op_item_edit {
   _arguments \
     '--dry-run[Perform a dry run of the command and output a preview of the resulting item.]' \
+    '--favorite[Whether this item is a favorite item. Options: true, false]' \
     '--generate-password[Give the item a randomly generated password.]' \
     '(-h --help)'{-h,--help}'[Get help with item edit.]' \
     '--tags[Set the tags to the specified (comma-separated) values. An empty value will remove all tags.]:' \
@@ -1201,6 +1208,7 @@ function _op_item_get {
     '(-h --help)'{-h,--help}'[Get help with item get.]' \
     '--include-archive[Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
     '--otp[Output the primary one-time password for this item.]' \
+    '--reveal[Don'\''t conceal the private SSH key, when using human-readable output.]' \
     '--share-link[Get a shareable link for the item.]' \
     '--vault[Look for the item in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
@@ -1223,6 +1231,22 @@ function _op_item_list {
     '--long[Output a more detailed item list.]' \
     '*--tags[Only list items with these `tags` (comma-separated).]:' \
     '--vault[Only list items in this `vault`.]:' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_item_move {
+  _arguments \
+    '--current-vault[Vault where the item is currently saved.]:' \
+    '--destination-vault[The vault you want to move the item to.]:' \
+    '(-h --help)'{-h,--help}'[Get help with item move.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
     '--config[Use this configuration `directory`.]:' \
@@ -1292,6 +1316,7 @@ function _op_item_template {
 
 function _op_item_template_get {
   _arguments \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
     '(-h --help)'{-h,--help}'[Get help with item template get.]' \
     '(-o --out-file)'{-o,--out-file}'[Write the template to a file instead of stdout.]:' \
@@ -1496,7 +1521,7 @@ function _op_plugin_run {
 
 function _op_read {
   _arguments \
-    '--file-mode[Set filemode for the output file if it does not yet exist. It is ignored without the --out-file flag.]:' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
     '(-h --help)'{-h,--help}'[Get help with read.]' \
     '(-n --no-newline)'{-n,--no-newline}'[Do not print a new line after the secret.]' \
