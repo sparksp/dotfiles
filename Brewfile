@@ -1,5 +1,6 @@
 tap "beeftornado/rmtree"
 tap "homebrew/cask-fonts"
+brew "asdf"
 brew "bat"
 brew "cask"
 brew "composer"
