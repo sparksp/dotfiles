@@ -12,10 +12,10 @@ alias grs="git flow release start"
 alias grf="git flow release finish"
 
 # File listings
-alias ls="exa --classify"
-alias l="exa --classify --long --color-scale --git --git-ignore"
-alias ll="exa --classify --long --color-scale --git"
-alias la="exa --classify --long --color-scale --git --all"
+alias ls="eza --classify"
+alias l="eza --classify --long --git --git-ignore --time-style=relative"
+alias ll="eza --classify --long --git"
+alias la="eza --classify --long --git --all"
 
 # Docker
 alias dcr="docker-compose run --rm"
