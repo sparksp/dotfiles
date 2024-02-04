@@ -6,3 +6,6 @@
 	path = zsh/elm
 	branch = master
 	url = https://github.com/dmy/elm-sh-completion
+[submodule "zsh/artisan"]
+	path = zsh/artisan
+	url = git@github.com:jessarcher/zsh-artisan.git
