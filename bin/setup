@@ -128,9 +128,8 @@ else
   rcup
 fi
 
-# Ensure GNUPG is secure
-if [ "$(stat -f %u:%g ~/.gnupg)" != "$(id -u):$(id -g)" ]; then
-  fancy_echo "Securing GNUPG directory ..."
-  sudo chown -R "$(id -u):$(id -g)" ~/.gnupg
+# Configure 1Password as the SSH Agent
+if [ "$(launchctl blame gui/501/com.openssh.ssh-agent)" != "(not running)" ]; then
+  fancy_echo "Disabling default ssh-agent ..."
+  sudo launchctl disable gui/501/com.openssh.ssh-agent
 fi
-chmod -R go-rwx ~/.gnupg

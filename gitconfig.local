@@ -1,6 +1,13 @@
 [core]
   pager = delta --dark
 
+[commit]
+  template = ~/.gitmessage
+  gpgsign = true
+
+[push]
+  default = simple
+
 [delta]
   syntax-theme = Halflife (rainglow)
   line-numbers = true
@@ -14,12 +21,31 @@
   path =
 
 [mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
   trustExitCode = true
 
 [user]
   name = Phill Sparks
   email = me@phills.me.uk
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHEDmQpE80Talf1nT3HxAGa7zhhOgA+oVoM0sLHrbPZd
+
+[credential "https://github.com"]
+  helper = 
+  helper = !/usr/local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = 
+  helper = !/usr/local/bin/gh auth git-credential
+
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [alias]
     nah = "!f(){ git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi; }; f"
