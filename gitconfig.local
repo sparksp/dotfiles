@@ -5,6 +5,9 @@
   template = ~/.gitmessage
   gpgsign = true
 
+[push]
+  default = simple
+
 [delta]
   syntax-theme = Halflife (rainglow)
   line-numbers = true
