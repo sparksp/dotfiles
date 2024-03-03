@@ -23,7 +23,7 @@ function _op {
     commands=(
       "account:Manage your locally configured 1Password accounts"
       "completion:Generate shell completion information"
-      "connect:Manage Connect instances and Connect tokens in your 1Password account"
+      "connect:Manage Connect server instances and tokens in your 1Password account"
       "document:Perform CRUD operations on Document items in your vaults"
       "events-api:Manage Events API integrations in your 1Password account"
       "group:Manage the groups in your 1Password account"
@@ -241,8 +241,8 @@ function _op_connect {
     commands=(
       "group:Manage group access to Secrets Automation"
       "server:Manage Connect servers"
-      "token:Manage Connect tokens"
-      "vault:Manage connect server vault access"
+      "token:Manage Connect server tokens"
+      "vault:Manage Connect server vault access"
     )
     _describe "command" commands
     ;;
@@ -472,7 +472,7 @@ function _op_connect_token {
     commands=(
       "create:Issue a token for a 1Password Connect server"
       "delete:Revoke a token for a Connect server"
-      "edit:Rename a Connect token"
+      "edit:Rename a Connect server token"
       "list:Get a list of tokens"
     )
     _describe "command" commands
@@ -705,7 +705,7 @@ function _op_document_delete {
 function _op_document_edit {
   _arguments \
     '--file-name[Set the file'\''s `name`.]:' \
-    '--tags[Set the tags to the specified (comma-separated) values. An empty value will remove all tags.]:' \
+    '--tags[Set the tags to the specified (comma-separated) values. An empty value removes all tags.]:' \
     '--title[Set the document item'\''s `title`.]:' \
     '--vault[Look up document in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
@@ -1805,7 +1805,7 @@ function _op_vault_edit {
     '--description[Change the vault'\''s `description`.]:' \
     '--icon[Change the vault'\''s `icon`.]:' \
     '--name[Change the vault'\''s `name`.]:' \
-    '--travel-mode[Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled will be accessible while a user has Travel Mode turned on.]:' \
+    '--travel-mode[Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
@@ -1921,6 +1921,7 @@ function _op_vault_group_revoke {
 function _op_vault_list {
   _arguments \
     '--group[List vaults a group has access to.]:' \
+    '--permission[List only vaults that the specified user/group has this permission for.]:' \
     '--user[List vaults that a given user has access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
     '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
