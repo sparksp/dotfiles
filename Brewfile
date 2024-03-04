@@ -24,14 +24,10 @@ brew "yarn"
 brew "zsh"
 cask "1password/tap/1password-cli"
 cask "alfred"
-cask "dropbox"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
-cask "google-drive"
 cask "orbstack"
-cask "skype"
 cask "sourcetree"
-cask "vlc"
 mas "Moom", id: 419330170
 mas "Patterns", id: 429449079
 mas "Slack", id: 803453959
