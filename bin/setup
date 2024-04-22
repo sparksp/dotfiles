@@ -91,6 +91,9 @@ upconfig="$(dirname "$(dirname "$(readlink "$0")")")/config/up/up.sh"
 echo "Fetching up.sh"
 curl --create-dirs -s -o "$upconfig" https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
 
+# Configure default Music app
+defaults write digital.twisted.noTunes replacement /Applications/Spotify.app
+
 if command -v composer > /dev/null ; then
   composer global update
 fi
