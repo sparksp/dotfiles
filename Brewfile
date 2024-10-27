@@ -13,6 +13,7 @@ brew "hugo"
 brew "imagemagick"
 brew "less", link: true
 brew "mas"
+brew "moom"
 brew "npm"
 brew "pkg-config"
 brew "php"
@@ -31,6 +32,5 @@ cask "notunes"
 cask "orbstack"
 cask "sourcetree"
 cask "spotify"
-mas "Moom", id: 419330170
 mas "Patterns", id: 429449079
 mas "Slack", id: 803453959
