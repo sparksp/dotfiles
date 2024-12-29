@@ -71,7 +71,7 @@ brew update --force # https://github.com/Homebrew/brew/issues/1151
 
 if [ ! -f "$HOME/.Brewfile" ]; then
   # If we use `brew bundle --file` then we'll get a lockfile here tht we don't want.
-  brewfile="$(dirname "$(dirname "$(readlink "$0")")")/Brewfile"
+  brewfile="$(dirname "$(dirname "$(readlink -f -- "$0")")")/Brewfile"
   # rcup will link this later but we want it in place now.
   ln -sf "$brewfile" ~/.Brewfile
 fi
@@ -81,12 +81,12 @@ mas outdated
 
 # Generate 1Password CLI auto-completion
 if type op &>/dev/null; then
-  op_compdef="$(dirname "$(dirname "$(readlink "$0")")")/zsh/completion/_op"
+  op_compdef="$(dirname "$(dirname "$(readlink -f -- "$0")")")/zsh/completion/_op"
   op completion zsh > "$op_compdef"
 fi
 
 # Fetch "up" into dotfiles
-upconfig="$(dirname "$(dirname "$(readlink "$0")")")/config/up/up.sh"
+upconfig="$(dirname "$(dirname "$(readlink -f -- "$0")")")/config/up/up.sh"
 echo "Fetching up.sh"
 curl --create-dirs -s -o "$upconfig" https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh
 
@@ -94,7 +94,9 @@ curl --create-dirs -s -o "$upconfig" https://raw.githubusercontent.com/shannonmo
 defaults write digital.twisted.noTunes replacement /Applications/Spotify.app
 
 if command -v composer > /dev/null ; then
-  composer global update
+  if [ -f "$HOME/.composer/composer.json" ]; then
+    composer global update
+  fi
 fi
 
 case "$SHELL" in
