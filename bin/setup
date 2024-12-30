@@ -101,7 +101,7 @@ fi
 
 case "$SHELL" in
   */zsh)
-    if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
+    if [ "$(command -v zsh)" != '/opt/homebrew/bin/zsh' ] ; then
       update_shell
     fi
     ;;
