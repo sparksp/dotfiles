@@ -77,7 +77,15 @@ if [ ! -f "$HOME/.Brewfile" ]; then
 fi
 brew bundle --global
 
-mas outdated
+# Install hvm (hugo version manager)
+go install github.com/jmooring/hvm@latest
+if type hvm &>/dev/null; then
+  hvm_alias="$(dirname "$(dirname "$(readlink -f -- "$0")")")/zsh/configs/hvm.zsh"
+  hvm gen alias zsh > "$hvm_alias"
+
+  hvm_compdef="$(dirname "$(dirname "$(readlink -f -- "$0")")")/zsh/completion/_hvm"
+  hvm completion zsh > "$hvm_compdef"
+fi
 
 # Generate 1Password CLI auto-completion
 if type op &>/dev/null; then
@@ -137,3 +145,5 @@ if [ "$(launchctl blame gui/501/com.openssh.ssh-agent)" != "(not running)" ]; th
   fancy_echo "Disabling default ssh-agent ..."
   sudo launchctl disable gui/501/com.openssh.ssh-agent
 fi
+
+mas outdated
